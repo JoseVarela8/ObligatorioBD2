@@ -27,7 +27,6 @@
           <h1 class="site-title" itemprop="name">
             PencaUCU
           </h1>
-
         </div>
       </div>
       <div class="grid-item-right">
@@ -42,7 +41,6 @@
         </div>
       </div>
     </div>
-
   </header>
 
   <div class="container">
@@ -64,6 +62,8 @@
 
     <section class="registration">
       <h2>Regístrate para Participar</h2>
+      <div id="datos-container"></div>
+      <div id="primer-dato-container"></div>
       <form class="registration-form">
         <label for="name">Nombre:</label>
         <input type="text" id="name" name="name" required>
@@ -78,6 +78,30 @@
       </form>
     </section>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('/datos')
+        .then(response => response.json())
+        .then(data => {
+          const primerDato = data[0];
+          const container = document.getElementById('primer-dato-container');
+          renderData(primerDato, container);
+        })
+        .catch(error => console.error('Error al obtener los datos:', error));
+    });
+
+    function renderData(data, container) {
+      const ul = document.createElement('ul');
+      const keys = Object.keys(data);
+      keys.forEach(key => {
+        const li = document.createElement('li');
+        li.textContent = `${key}: ${data[key]}`;
+        ul.appendChild(li);
+      });
+      container.appendChild(ul);
+    }
+  </script>
 
 </body>
 
