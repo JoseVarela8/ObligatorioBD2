@@ -1,11 +1,11 @@
 # Usar la imagen de Node como base para compilar la aplicación Angular
-FROM node:14 AS build
+FROM node:18.20.3-alpine3.18 AS build
 
 # Directorio de trabajo en el contenedor
 WORKDIR /app
 
 # Copiar el código fuente del frontend al contenedor
-COPY Front2 /app
+COPY  . /app
 
 # Instalar Angular CLI (si no está instalado)
 RUN npm install -g @angular/cli
@@ -17,13 +17,13 @@ RUN npm install
 RUN ng build
 
 # Segunda etapa para la imagen final
-FROM docker.io/library/nginx:alpine
+FROM nginx:alpine
 
 # Copiar los archivos compilados de Angular al directorio de NGINX
-COPY --from=build-stage /app/dist/front-bdd /usr/share/nginx/html
+COPY --from=build /app/dist/front2 /usr/share/nginx/html
 
 # Puerto en el que escucha nginx
-EXPOSE 4200
+EXPOSE 80
 
 # Comando para iniciar el servidor nginx
 CMD ["nginx", "-g", "daemon off;"]

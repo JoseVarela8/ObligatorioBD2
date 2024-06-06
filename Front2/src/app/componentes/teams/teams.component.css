@@ -84,6 +84,39 @@ a{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a h2 {
+    color: black;
+}
+
+/* Opcional: Si deseas cambiar el color del texto al pasar el ratón por encima */
+a:hover h2 {
+    color: #0a2481;
+}
+
+/* Si quieres que solo afecte a los enlaces dentro de .bot-div */
+.bot-div a {
+    text-decoration: none;
+}
+
+.bot-div a h2 {
+    color: #0a2481;
+}
+
+.bot-div a:hover h2 {
+    color: #0a2481;
+}
+
+
+
+.text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
 .welcome,
 .matches,
 .registration {

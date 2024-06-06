@@ -32,6 +32,7 @@
 
 /* Imágenes */
 .grid-item img {
+    padding-top: 5%;
     max-width: 100%;
     height: auto;
     display: block;
