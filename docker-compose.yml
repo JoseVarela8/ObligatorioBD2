@@ -3,7 +3,7 @@ services:
   mysql:
     image: mysql:latest
     ports:
-      - "3306:3306"
+      - "3380:3380"
     environment:
       MYSQL_ROOT_PASSWORD: rootpass1234
       MYSQL_DATABASE: PencaUCU
@@ -22,9 +22,10 @@ services:
       - mysql
     command: npm run dev
 
+
   frontend:
     build:
-      context: ./frontend
+      context: ./Front2
       dockerfile: Dockerfile-frontend
     ports:
       - "4200:4200"
